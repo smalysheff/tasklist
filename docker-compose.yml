@@ -1,0 +1,12 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: postgres_tasklist
+    image: 'postgres:15.3-alpine3.18'
+    environment:
+      POSTGRES_DB: "tasklist"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - '5431:5432'

@@ -27,6 +27,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
     public boolean isTaskOwner(Long userId, Long taskId) {
         return false;
     }

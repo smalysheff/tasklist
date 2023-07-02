@@ -10,7 +10,7 @@ import ru.smal.tasklist.web.dto.validation.OnUpdate;
 import ru.smal.tasklist.web.mapper.TaskMapper;
 
 @RestController
-@RequestMapping("api/v2/tasks")
+@RequestMapping("api/v1/tasks")
 @RequiredArgsConstructor
 @Validated
 public class TaskController {
