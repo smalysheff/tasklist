@@ -1,6 +1,6 @@
 package ru.smal.tasklist.service;
 
-import org.springframework.scheduling.config.Task;
+import ru.smal.tasklist.domain.task.Task;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface TaskService {
 
     Task update(Task task);
 
-    Task create(Task task, Long id);
+    Task create(Task task, Long userId);
 
     void delete(Long id);
 }

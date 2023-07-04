@@ -1,7 +1,7 @@
 package ru.smal.tasklist.repository;
 
-import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Repository;
+import ru.smal.tasklist.domain.task.Task;
 
 import java.util.List;
 import java.util.Optional;
