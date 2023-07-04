@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
@@ -27,6 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
                    u.username        as user_username,
                    u.password        as user_password,
                    ur.role           as user_role_role,
+                   t.id              as task_id,
                    t.title           as task_title,
                    t.description     as task_description,
                    t.expiration_date as task_expiration_date,
@@ -127,9 +128,9 @@ public class UserRepositoryImpl implements UserRepository {
         try {
             Connection connection = dataSourceConfig.getConnection();
             PreparedStatement statement = connection.prepareStatement(UPDATE);
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getUsername());
-            statement.setString(3, user.getPassword());
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getPasswordConfirmation());
             statement.setLong(4, user.getId());
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -143,9 +144,9 @@ public class UserRepositoryImpl implements UserRepository {
         try {
             Connection connection = dataSourceConfig.getConnection();
             PreparedStatement statement = connection.prepareStatement(CREATE, PreparedStatement.RETURN_GENERATED_KEYS);
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getUsername());
-            statement.setString(3, user.getPassword());
+            statement.setString(1, user.getUsername());
+            statement.setString(2, user.getPassword());
+            statement.setString(3, user.getPasswordConfirmation());
             statement.executeUpdate();
             try (ResultSet rs = statement.getGeneratedKeys()) {
                 rs.next();

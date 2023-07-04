@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class TaskRepositoryImpl implements TaskRepository {
 
@@ -40,7 +40,7 @@ public class TaskRepositoryImpl implements TaskRepository {
             """;
 
     private final String ASSIGN = """
-            INSERT INTO users_tasks(user_id, task_id)
+            INSERT INTO users_tasks(task_id, user_id)
             VALUES (?, ?)
             """;
 
