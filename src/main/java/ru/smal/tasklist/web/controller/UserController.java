@@ -1,9 +1,9 @@
 package ru.smal.tasklist.web.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.config.Task;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.smal.tasklist.domain.task.Task;
 import ru.smal.tasklist.domain.user.User;
 import ru.smal.tasklist.service.TaskService;
 import ru.smal.tasklist.service.UserService;
