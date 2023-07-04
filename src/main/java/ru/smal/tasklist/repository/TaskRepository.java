@@ -1,12 +1,12 @@
 package ru.smal.tasklist.repository;
 
-import org.springframework.scheduling.config.Task;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
+import ru.smal.tasklist.domain.task.Task;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Mapper
 public interface TaskRepository {
 
     Optional<Task> findById(Long id);

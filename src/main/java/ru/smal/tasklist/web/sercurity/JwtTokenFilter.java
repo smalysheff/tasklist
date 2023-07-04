@@ -13,18 +13,16 @@ import ru.smal.tasklist.domain.exception.ResourceNotFoundException;
 
 import java.io.IOException;
 
-
 @AllArgsConstructor
 public class JwtTokenFilter extends GenericFilterBean {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String barerToken = ((HttpServletRequest) servletRequest).getHeader("Authorization");
         if (barerToken != null && barerToken.startsWith("Bearer ")) {
-            String token = barerToken.substring(7);
+            barerToken = barerToken.substring(7);
         }
         if (barerToken != null && jwtTokenProvider.validateToken(barerToken)) {
             try {
@@ -35,5 +33,6 @@ public class JwtTokenFilter extends GenericFilterBean {
             } catch (ResourceNotFoundException ignored) {
             }
         }
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }
