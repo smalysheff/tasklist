@@ -22,6 +22,7 @@
 		<hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 		<jakarta-validation.version>3.0.2</jakarta-validation.version>
 		<jjwt.version>0.11.5</jjwt.version>
+		<mybatis.version>3.0.2</mybatis.version>
 	</properties>
 
 	<dependencies>
@@ -74,12 +75,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Validation -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
@@ -103,6 +104,13 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>${jjwt.version}</version>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis.version}</version>
 		</dependency>
 
 	</dependencies>

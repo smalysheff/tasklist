@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class UserRepositoryImpl implements UserRepository {
 
@@ -27,6 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
                    u.username        as user_username,
                    u.password        as user_password,
                    ur.role           as user_role_role,
+                   t.id              as task_id,
                    t.title           as task_title,
                    t.description     as task_description,
                    t.expiration_date as task_expiration_date,
@@ -45,6 +46,7 @@ public class UserRepositoryImpl implements UserRepository {
                    u.username        as user_username,
                    u.password        as user_password,
                    ur.role           as user_role_role,
+                   t.id              as task_id,
                    t.title           as task_title,
                    t.description     as task_description,
                    t.expiration_date as task_expiration_date,
@@ -97,7 +99,7 @@ public class UserRepositoryImpl implements UserRepository {
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             statement.setLong(1, id);
-            try (ResultSet rs = statement.getResultSet()) {
+            try (ResultSet rs = statement.executeQuery()) {
                 return Optional.ofNullable(UserRowMapper.mapRow(rs));
             }
         } catch (SQLException e) {
@@ -113,7 +115,7 @@ public class UserRepositoryImpl implements UserRepository {
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             statement.setString(1, username);
-            try (ResultSet rs = statement.getResultSet()) {
+            try (ResultSet rs = statement.executeQuery()) {
                 return Optional.ofNullable(UserRowMapper.mapRow(rs));
             }
         } catch (SQLException e) {

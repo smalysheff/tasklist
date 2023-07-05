@@ -1,10 +1,12 @@
 package ru.smal.tasklist.web.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.smal.tasklist.domain.user.User;
 import ru.smal.tasklist.service.AuthService;
 import ru.smal.tasklist.service.UserService;
@@ -16,7 +18,7 @@ import ru.smal.tasklist.web.mapper.UserMapper;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping(path = "/api/v1/auth")
 @RequiredArgsConstructor
 @Validated
 public class AuthController {
@@ -26,12 +28,12 @@ public class AuthController {
     private final UserMapper userMapper;
 
     @PostMapping("/login")
-    public JwtResponse login(@Valid @RequestBody JwtRequest loginRequest) {
+    public JwtResponse login(@Validated @RequestBody JwtRequest loginRequest) {
         log.info("request for login");
         return authService.login(loginRequest);
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public UserDto register(@Validated(OnCreate.class) @RequestBody UserDto userDto) {
         User user = userMapper.toEntity(userDto);
         User created = userService.create(user);

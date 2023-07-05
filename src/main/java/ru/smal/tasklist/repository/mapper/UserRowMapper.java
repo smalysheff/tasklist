@@ -15,7 +15,7 @@ public class UserRowMapper {
     public static User mapRow(ResultSet resultSet) throws SQLException {
         Set<Role> roles = new HashSet<>();
         while (resultSet.next()) {
-            roles.add(Role.valueOf(resultSet.getString("user_user_role")));
+            roles.add(Role.valueOf(resultSet.getString("user_role_role")));
         }
         resultSet.beforeFirst();
         List<Task> tasks = TaskRowMapper.mapRows(resultSet);
