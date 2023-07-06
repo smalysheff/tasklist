@@ -22,3 +22,7 @@ security:
     secret: c2xkYWtmamxqc2xmam9pd2Vqd2U7Zix3O2VmbW5na2ZtbmcubXZDSk9JRU5MQUdM
     access: 3600000
     refresh: 2592000000
+server:
+  port: 8081
+springdoc:
+  override-with-generic-response: false

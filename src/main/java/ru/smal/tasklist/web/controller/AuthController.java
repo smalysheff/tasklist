@@ -1,5 +1,6 @@
 package ru.smal.tasklist.web.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -21,6 +22,7 @@ import ru.smal.tasklist.web.mapper.UserMapper;
 @RequestMapping(path = "/api/v1/auth")
 @RequiredArgsConstructor
 @Validated
+@Tag(name = "Authentication Controller", description = "Authentication controller")
 public class AuthController {
 
     private final AuthService authService;

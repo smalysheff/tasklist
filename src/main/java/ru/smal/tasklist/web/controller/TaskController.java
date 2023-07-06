@@ -1,5 +1,6 @@
 package ru.smal.tasklist.web.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import ru.smal.tasklist.domain.task.Task;
 import org.springframework.validation.annotation.Validated;
@@ -13,6 +14,7 @@ import ru.smal.tasklist.web.mapper.TaskMapper;
 @RequestMapping("api/v1/tasks")
 @RequiredArgsConstructor
 @Validated
+@Tag(name = "Task Controller", description = "Task controller")
 public class TaskController {
 
     private final TaskMapper taskMapper;
