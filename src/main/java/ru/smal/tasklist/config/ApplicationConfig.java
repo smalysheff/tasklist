@@ -11,8 +11,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
+import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -22,9 +26,12 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import ru.smal.tasklist.web.sercurity.JwtTokenFilter;
 import ru.smal.tasklist.web.sercurity.JwtTokenProvider;
+import ru.smal.tasklist.web.sercurity.expression.CustomSecurityExpressionHandler;
 
 @Configuration
 @EnableWebSecurity
+//@EnableMethodSecurity // new annotation for security
+@EnableGlobalMethodSecurity(prePostEnabled = true) // deprecated for security
 @RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class ApplicationConfig {
 
@@ -39,6 +46,13 @@ public class ApplicationConfig {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
+    }
+
+    @Bean
+    public MethodSecurityExpressionHandler expressionHandler() {
+        DefaultMethodSecurityExpressionHandler expressionHandler = new CustomSecurityExpressionHandler();
+        expressionHandler.setApplicationContext(applicationContext);
+        return expressionHandler;
     }
 
     @Bean
