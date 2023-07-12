@@ -19,6 +19,8 @@ import ru.smal.tasklist.service.props.JwtProperties;
 import ru.smal.tasklist.web.dto.auth.JwtResponse;
 
 import java.security.Key;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -43,11 +45,11 @@ public class JwtTokenProvider {
         claims.put("id", userId);
         claims.put("roles", resolveRoles(roles));
         Date now = new Date();
-        Date expiration = new Date(now.getTime() + jwtProperties.getAccess());
+        Instant expiration = Instant.now()
+                .plus(jwtProperties.getAccess(), ChronoUnit.HOURS);
         return Jwts.builder()
                 .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(expiration)
+                .setExpiration(Date.from(expiration))
                 .signWith(key)
                 .compact();
     }
@@ -62,11 +64,12 @@ public class JwtTokenProvider {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("id", userId);
         Date now = new Date();
-        Date expiration = new Date(now.getTime() + jwtProperties.getRefresh());
+        Instant expiration = Instant.now()
+                .plus(jwtProperties.getRefresh(), ChronoUnit.DAYS);
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
-                .setExpiration(expiration)
+                .setExpiration(Date.from(expiration))
                 .signWith(key)
                 .compact();
     }
