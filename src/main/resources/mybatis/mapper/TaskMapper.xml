@@ -21,20 +21,20 @@
         WHERE t.id = #{id}
     </select>
 
-    <select id="findAllByUserId" resultMap="TaskResultMap">
-        SELECT t.id              as task_id,
-        t.title           as title,
-        t.description     as description,
-        t.expiration_date as expiration_date,
-        t.status          as status
+    <select id="findAllByUserId" resultMap="TaskResultMap" parameterType="java.lang.Long">
+        SELECT t.id as task_id,
+        t.title as task_title,
+        t.description as task_description,
+        t.expiration_date as task_expiration_date,
+        t.status as task_status
         FROM tasks t
         JOIN users_tasks ut on t.id = ut.task_id
-        WHERE ut.user_id = #{userId}
+        WHERE ut.user_id = #{user_id}
     </select>
 
     <insert id="create" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
         INSERT INTO tasks(title, description, expiration_date, status)
-        VALUES (#{title}, #{description}, #{expiretion_date}, #{status})
+        VALUES (#{title}, #{description}, #{expiration_date}, #{status})
     </insert>
 
     <update id="update">
