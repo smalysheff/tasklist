@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.smal.tasklist.domain.exception.AccessDeniedException;
 import ru.smal.tasklist.domain.exception.ExceptionBody;
+import ru.smal.tasklist.domain.exception.ImageUploadException;
 import ru.smal.tasklist.domain.exception.ResourceMappingException;
 import ru.smal.tasklist.domain.exception.ResourceNotFoundException;
 
@@ -69,6 +70,12 @@ public class ControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ExceptionBody handleAuthentication(AuthenticationException e) {
         return new ExceptionBody("Authentication failed");
+    }
+
+    @ExceptionHandler(ImageUploadException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ExceptionBody handleImageUpload(ImageUploadException e) {
+        return new ExceptionBody(e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
