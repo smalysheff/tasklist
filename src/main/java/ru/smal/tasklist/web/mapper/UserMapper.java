@@ -5,9 +5,5 @@ import ru.smal.tasklist.domain.user.User;
 import ru.smal.tasklist.web.dto.user.UserDto;
 
 @Mapper(componentModel = "spring")
-public interface UserMapper {
-
-    UserDto toDto(User user);
-
-    User toEntity(UserDto userDto);
+public interface UserMapper extends BaseMapper<User, UserDto>{
 }

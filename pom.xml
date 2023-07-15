@@ -24,6 +24,8 @@
 		<jjwt.version>0.11.5</jjwt.version>
 		<mybatis.version>3.0.2</mybatis.version>
 		<springdoc.version>2.1.0</springdoc.version>
+		<preliquibase.version>1.4.0</preliquibase.version>
+		<minio.version>8.5.4</minio.version>
 	</properties>
 
 	<dependencies>
@@ -114,18 +116,17 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- MyBatis -->
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>${mybatis.version}</version>
-		</dependency>
-
 		<!-- Liquibase -->
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>net.lbruun.springboot</groupId>
+			<artifactId>preliquibase-spring-boot-starter</artifactId>
+			<version>${preliquibase.version}</version>
+		</dependency>
+
 
 		<!-- SpringDoc Swagger -->
 		<dependency>
@@ -133,6 +134,14 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>${springdoc.version}</version>
 		</dependency>
+
+		<!-- Minio -->
+		<dependency>
+			<groupId>io.minio</groupId>
+			<artifactId>minio</artifactId>
+			<version>${minio.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
