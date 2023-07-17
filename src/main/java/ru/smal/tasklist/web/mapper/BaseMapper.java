@@ -2,7 +2,7 @@ package ru.smal.tasklist.web.mapper;
 
 import java.util.List;
 
-public interface BaseMapper<E, D>{
+public interface BaseMapper<E, D> {
 
     D toDto(E entity);
 

@@ -10,7 +10,7 @@ import org.springframework.security.core.Authentication;
 import ru.smal.tasklist.service.UserService;
 
 public class CustomSecurityExpressionHandler extends DefaultMethodSecurityExpressionHandler {
-    
+
     private ApplicationContext applicationContext;
     private final AuthenticationTrustResolver trustResolver = new AuthenticationTrustResolverImpl();
 
