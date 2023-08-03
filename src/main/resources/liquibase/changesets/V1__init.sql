@@ -4,19 +4,21 @@
 
 create table if not exists users
 (
-    id       bigserial primary key,
+    id       bigserial,
     name     varchar(255) not null,
     username varchar(255) not null,
-    password varchar(255) not null
+    password varchar(255) not null,
+    constraint pk_users_id primary key (id)
 );
 
 create table if not exists tasks
 (
-    id              bigserial primary key,
+    id              bigserial,
     title           varchar(255) not null,
     description     varchar(255) null,
     status          varchar(255) not null,
-    expiration_date timestamp    null
+    expiration_date timestamp    null,
+    constraint pk_tesks_id primary key (id)
 );
 
 create table if not exists users_tasks

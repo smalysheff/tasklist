@@ -18,6 +18,7 @@ spring:
     change-log: classpath:liquibase/db.changelog.yml
     enabled: true
     default-schema: ${POSTGRES_SCHEMA}
+    liquibase-schema: public
 
 security:
   jwt:
