@@ -3,8 +3,8 @@
 --changeset MalyshevSV:HM-02
 
 insert into users (name, username, password)
-values ('John', 'Doe', '$2a$10$rWfXP0fyK0gwu7U0j4EsruaSK5713NQSl32iOOaL1wCFcUTjJ0FvC'),
-       ('James', 'Gosling', '$2a$10$0akTcgFeV7P3pDdAFCu8qOzKltFmZBPhuBOBqLxn3VZbtovLfiLEO');
+values ('John Doe', 'doe@mail.ru', '$2a$10$4yeIqYKTaY1hnTWxNWr76OWaiv2g/nYEoUXbaRnVqs59GlH2M11Wq'),
+       ('James Gosling', 'gosling@mail.ru', '$2a$10$GnDG3c5OuAcTbUQxBsdn7exR9FfYALwvpLD0TcqsBE3LZ2t2QqHl.');
 
 insert into tasks (title, description, status, expiration_date)
 values ('Buy cheese', null, 'TODO', '2023-07-01 12:00:00'),

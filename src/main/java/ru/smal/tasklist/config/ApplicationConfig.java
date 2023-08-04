@@ -97,7 +97,8 @@ public class ApplicationConfig {
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .exceptionHandling(configurer ->
-                        configurer.authenticationEntryPoint(
+                        configurer
+                                .authenticationEntryPoint(
                                         (request, response, authException) -> {
                                             response.setStatus(HttpStatus.UNAUTHORIZED.value());
                                             response.getWriter().write("Unauthorized.");
@@ -110,7 +111,8 @@ public class ApplicationConfig {
                                 )
                 )
                 .authorizeHttpRequests(configurer ->
-                        configurer.requestMatchers("/api/v1/auth/**").permitAll()
+                        configurer
+                                .requestMatchers("/api/v1/auth/**").permitAll()
                                 .requestMatchers("/swagger-ui/**").permitAll()
                                 .requestMatchers("/swagger-ui**").permitAll()
                                 .requestMatchers("/v3/api-docs/**").permitAll()
